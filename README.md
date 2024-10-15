@@ -19,11 +19,11 @@ A **Bus Seat Booking System** implemented in Java using **Swing** for the GUI, a
 
 This project contains the following core components:
 
-1. **Bus.java**: Represents a bus, including attributes like the bus name, route, price, seat availability, and arrival/departure times. This class follows the **Information Expert** principle as it encapsulates all the necessary information regarding the bus and its operations, such as checking seat availability and booking seats.
+1. **Bus.java**: Represents a bus, encapsulating attributes such as the bus name, route, price, seat availability, and arrival/departure times. This class follows the Information Expert principle by managing all relevant information and operations related to the bus, including checking seat availability and handling seat bookings.
 
-2. **Seat.java**: Represents individual seats on a bus, with seat number and availability status.
+2. **Seat.java**: Represents individual seats on a bus, including the seat number and availability status. This class adheres to the Information Expert principle by controlling the logic related to seat availability, ensuring that all necessary information about the seat is encapsulated.
 
-3. **Booking.java**: Represents a booking made by a user, storing information about the bus, seat number, and price.
+3. **Booking.java**: Represents a booking made by a user, storing information about the bus, seat number, and price. It implements the Information Expert principle by managing all details relevant to a booking, including generating receipts based on the bus and seat information.
 
 4. **BusScheduler.java**: Handles the logic of finding the next available bus if the selected bus has no available seats.
 
