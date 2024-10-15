@@ -1,5 +1,3 @@
-
-// Information Expert - Bus class
 import java.util.ArrayList;
 
 public class Bus {
