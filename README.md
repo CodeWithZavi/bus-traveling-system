@@ -29,6 +29,8 @@ This project contains the following core components:
 
 5. **BusBookingApp.java**: The main application class, which creates the GUI for booking bus seats and manages interactions between the user and the bus system. This class follows the **Controller** principle as it coordinates all user actions, manages the flow of information between the GUI and backend logic, and controls the interaction between buses, seats, and the booking process.
 
+## OUT PUT VIDEO:
+https://github.com/user-attachments/assets/8d5af255-1b17-4c32-a740-6cebb78f9a12
 ## Screenshots
 
 ![Screenshot of the Bus Booking System UI](screenshot.png)
