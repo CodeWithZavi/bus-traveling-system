@@ -4,6 +4,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class BusBookingApp extends JFrame {
+    // GRASP: BusBookingApp is the Controller
+    // It handles user interaction, coordinates between buses, seats, and bookings.
     private ArrayList<Bus> buses = new ArrayList<>();
     private JComboBox<String> busComboBox;
     private JTextArea seatArea;
@@ -13,6 +15,7 @@ public class BusBookingApp extends JFrame {
     private JTextArea receiptArea;
     private BusScheduler busScheduler;
 
+    // Constructor: Initializes buses and GUI components
     public BusBookingApp() {
         buses.add(new Bus("Daewoo", "Islamabad - Lahore", 1500.0, 10, "10:00 AM", "2:00 PM"));
         buses.add(new Bus("Daewoo", "Islamabad - Karachi", 2500.0, 15, "11:00 AM", "9:00 PM"));
@@ -68,7 +71,7 @@ public class BusBookingApp extends JFrame {
 
         JLabel arrivalText = new JLabel("Arrival:");
         arrivalText.setBounds(20, 350, 100, 25);
-        add(arrivalText);
+        add(arrivalLabel);
 
         arrivalLabel = new JLabel("");
         arrivalLabel.setBounds(150, 350, 200, 25);
@@ -82,6 +85,7 @@ public class BusBookingApp extends JFrame {
         receiptArea.setBounds(20, 440, 500, 200); // Increased receipt area size
         add(receiptArea);
 
+        // Event handlers
         busComboBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -99,6 +103,8 @@ public class BusBookingApp extends JFrame {
         displayAvailableSeats();
     }
 
+    // GRASP: Controller - BusBookingApp manages the system event of displaying
+    // available seats
     private void displayAvailableSeats() {
         Bus selectedBus = buses.get(busComboBox.getSelectedIndex());
         StringBuilder seatsInfo = new StringBuilder();
@@ -112,6 +118,7 @@ public class BusBookingApp extends JFrame {
         arrivalLabel.setText(selectedBus.getArrivalTime());
     }
 
+    // GRASP: Controller - BusBookingApp handles the booking process
     private void bookSeat() {
         try {
             int seatNumber = Integer.parseInt(seatNumberField.getText());
