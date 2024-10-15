@@ -1,3 +1,5 @@
+
+// Information Expert - Bus class
 import java.util.ArrayList;
 
 public class Bus {
@@ -44,6 +46,7 @@ public class Bus {
         return seats;
     }
 
+    // Information Expert - Bus knows how to check seat availability
     public Seat getSeat(int seatNumber) {
         for (Seat seat : seats) {
             if (seat.getSeatNumber() == seatNumber) {
