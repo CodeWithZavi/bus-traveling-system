@@ -4,9 +4,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class BusBookingApp extends JFrame {
-    // GRASP: BusBookingApp is the Controller
-    // It handles user interaction, coordinates between buses, seats, and bookings.
-    private ArrayList<Bus> buses = new ArrayList<>();
+    // Declaring components
+    private ArrayList<Bus> buses;
     private JComboBox<String> busComboBox;
     private JTextArea seatArea;
     private JTextField seatNumberField;
@@ -17,34 +16,39 @@ public class BusBookingApp extends JFrame {
 
     // Constructor: Initializes buses and GUI components
     public BusBookingApp() {
+        // Initialize buses and scheduler
+        buses = new ArrayList<>();
         buses.add(new Bus("Daewoo", "Islamabad - Lahore", 1500.0, 10, "10:00 AM", "2:00 PM"));
         buses.add(new Bus("Daewoo", "Islamabad - Karachi", 2500.0, 15, "11:00 AM", "9:00 PM"));
         buses.add(new Bus("Daewoo", "Rawalpindi - Multan", 1800.0, 20, "12:00 PM", "6:00 PM"));
         buses.add(new Bus("Daewoo", "Peshawar - Lahore", 1300.0, 12, "9:00 AM", "1:00 PM"));
 
-        // Initialize the bus scheduler with the list of buses
-        busScheduler = new BusScheduler(buses);
+        busScheduler = new BusScheduler(buses); // Low coupling by using BusScheduler
 
+        // Initialize GUI components before adding them
         setTitle("Bus Seat Booking System");
-        setSize(600, 700); // Increased size of the GUI
+        setSize(600, 700);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
 
+        // Bus selection combo box
         JLabel busLabel = new JLabel("Select Bus:");
         busLabel.setBounds(20, 20, 100, 25);
-        add(busLabel);
+        add(busLabel); // Ensure the component is added after initialization
 
         busComboBox = new JComboBox<>();
         for (Bus bus : buses) {
             busComboBox.addItem(bus.getBusName() + " (" + bus.getRoute() + ")");
         }
         busComboBox.setBounds(150, 20, 300, 25);
-        add(busComboBox);
+        add(busComboBox); // Adding initialized JComboBox
 
+        // Seat availability area
         seatArea = new JTextArea();
-        seatArea.setBounds(20, 60, 500, 150); // Increased text area size
+        seatArea.setBounds(20, 60, 500, 150);
         add(seatArea);
 
+        // Seat number input field
         JLabel seatNumberLabel = new JLabel("Enter Seat Number:");
         seatNumberLabel.setBounds(20, 230, 150, 25);
         add(seatNumberLabel);
@@ -53,6 +57,7 @@ public class BusBookingApp extends JFrame {
         seatNumberField.setBounds(170, 230, 50, 25);
         add(seatNumberField);
 
+        // Price label
         JLabel priceText = new JLabel("Price:");
         priceText.setBounds(20, 270, 100, 25);
         add(priceText);
@@ -61,6 +66,7 @@ public class BusBookingApp extends JFrame {
         priceLabel.setBounds(150, 270, 100, 25);
         add(priceLabel);
 
+        // Departure label
         JLabel departureText = new JLabel("Departure:");
         departureText.setBounds(20, 310, 100, 25);
         add(departureText);
@@ -69,23 +75,26 @@ public class BusBookingApp extends JFrame {
         departureLabel.setBounds(150, 310, 200, 25);
         add(departureLabel);
 
+        // Arrival label
         JLabel arrivalText = new JLabel("Arrival:");
         arrivalText.setBounds(20, 350, 100, 25);
-        add(arrivalLabel);
+        add(arrivalText);
 
         arrivalLabel = new JLabel("");
         arrivalLabel.setBounds(150, 350, 200, 25);
         add(arrivalLabel);
 
+        // Book seat button
         bookButton = new JButton("Book Seat");
         bookButton.setBounds(20, 390, 150, 30);
         add(bookButton);
 
+        // Receipt area
         receiptArea = new JTextArea();
-        receiptArea.setBounds(20, 440, 500, 200); // Increased receipt area size
+        receiptArea.setBounds(20, 440, 500, 200);
         add(receiptArea);
 
-        // Event handlers
+        // Action listener for bus selection
         busComboBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -93,6 +102,7 @@ public class BusBookingApp extends JFrame {
             }
         });
 
+        // Action listener for booking the seat
         bookButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -100,11 +110,11 @@ public class BusBookingApp extends JFrame {
             }
         });
 
+        // Initial seat display
         displayAvailableSeats();
     }
 
-    // GRASP: Controller - BusBookingApp manages the system event of displaying
-    // available seats
+    // Display available seats for the selected bus
     private void displayAvailableSeats() {
         Bus selectedBus = buses.get(busComboBox.getSelectedIndex());
         StringBuilder seatsInfo = new StringBuilder();
@@ -118,7 +128,7 @@ public class BusBookingApp extends JFrame {
         arrivalLabel.setText(selectedBus.getArrivalTime());
     }
 
-    // GRASP: Controller - BusBookingApp handles the booking process
+    // Handle the seat booking process
     private void bookSeat() {
         try {
             int seatNumber = Integer.parseInt(seatNumberField.getText());
@@ -131,7 +141,7 @@ public class BusBookingApp extends JFrame {
                 receiptArea.setText(booking.getReceipt());
                 displayAvailableSeats(); // Update seat availability display
             } else {
-                // If seat is not available, find the next bus with available seat
+                // Find the next bus with available seats
                 Bus nextAvailableBus = busScheduler.findNextAvailableBus(selectedBusIndex, seatNumber);
                 if (nextAvailableBus != null) {
                     int choice = JOptionPane.showConfirmDialog(this,
@@ -156,6 +166,7 @@ public class BusBookingApp extends JFrame {
         }
     }
 
+    // Main method to run the application
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             BusBookingApp app = new BusBookingApp();
