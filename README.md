@@ -19,16 +19,18 @@ A **Bus Seat Booking System** implemented in Java using **Swing** for the GUI, a
 
 This project contains the following core components:
 
-1. **Bus.java**: Represents a bus, including attributes like the bus name, route, price, seat availability, and arrival/departure times. This class follows the **Information Expert** principle as it encapsulates all the necessary information regarding the bus and its operations, such as checking seat availability and booking seats.
+1. **Bus.java**: Represents a bus, encapsulating attributes such as the bus name, route, price, seat availability, and arrival/departure times. This class follows the Information Expert principle by managing all relevant information and operations related to the bus, including checking seat availability and handling seat bookings.
 
-2. **Seat.java**: Represents individual seats on a bus, with seat number and availability status.
+2. **Seat.java**:  Represents individual seats on a bus, including the seat number and availability status. This class demonstrates Low Coupling by being independent of other classes and focusing solely on seat-related data and operations. It encapsulates seat availability logic while maintaining high cohesion by ensuring that all methods and properties directly relate to the seat's functionality.
 
-3. **Booking.java**: Represents a booking made by a user, storing information about the bus, seat number, and price.
+3. **Booking.java**:Represents a booking made by a user, storing information about the bus, seat number, and price. This class adheres to the Creator principle, as it is responsible for instantiating the booking based on the provided bus and seat details. It manages all relevant booking details and ensures that the receipt generation is cohesive and directly related to the booking process.
 
-4. **BusScheduler.java**: Handles the logic of finding the next available bus if the selected bus has no available seats.
+4. **BusScheduler.java**: Handles the logic of finding the next available bus if the selected bus has no available seats. This class applies the High Cohesion principle by focusing solely on scheduling logic, allowing for efficient management of bus availability. It interacts with the bus data and seat availability without being tightly coupled to other components, thus promoting easier maintenance and testing.
 
 5. **BusBookingApp.java**: The main application class, which creates the GUI for booking bus seats and manages interactions between the user and the bus system. This class follows the **Controller** principle as it coordinates all user actions, manages the flow of information between the GUI and backend logic, and controls the interaction between buses, seats, and the booking process.
 
+## OUT PUT VIDEO:
+https://github.com/user-attachments/assets/8d5af255-1b17-4c32-a740-6cebb78f9a12
 ## Screenshots
 
 ![Screenshot of the Bus Booking System UI](screenshot.png)
