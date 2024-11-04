@@ -2,6 +2,10 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import application.BusScheduler;
+import domain.Bus;
+import domain.Seat;
+import infrastructure.Booking;
 
 public class BusBookingApp extends JFrame {
     // Declaring components
