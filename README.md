@@ -28,7 +28,18 @@ This project contains the following core components:
 4. **BusScheduler.java**: Handles the logic of finding the next available bus if the selected bus has no available seats. This class applies the High Cohesion principle by focusing solely on scheduling logic, allowing for efficient management of bus availability. It interacts with the bus data and seat availability without being tightly coupled to other components, thus promoting easier maintenance and testing.
 
 5. **BusBookingApp.java**: The main application class, which creates the GUI for booking bus seats and manages interactions between the user and the bus system. This class follows the **Controller** principle as it coordinates all user actions, manages the flow of information between the GUI and backend logic, and controls the interaction between buses, seats, and the booking process.
+## Architecture
+The Bus Booking System follows a layered architecture, divided into the following packages:
 
+- **Application Layer**: Contains `BusScheduler.java` for scheduling and managing bus bookings.
+- **Domain Layer**: Includes `Bus.java`, `Seat.java`, and `Booking.java`, representing core entities and business logic.
+- **Infrastructure Layer**: Contains `BookingService.java`, which handles data interactions (optional).
+- **UI Layer**: Consists of `BusBookingApp.java`, the user interface for the application.
+
+### Extensions
+- **Invalid Details**: System prompts for correction if invalid input is detected.
+- **Payment Error**: System handles payment failures with options to retry or cancel.
+- **No Seats Available**: System suggests alternatives if no seats are available.
 ## OUT PUT VIDEO:
 https://github.com/user-attachments/assets/8d5af255-1b17-4c32-a740-6cebb78f9a12
 ## Screenshots
