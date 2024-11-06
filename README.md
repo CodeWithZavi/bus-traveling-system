@@ -40,8 +40,9 @@ The Bus Booking System follows a layered architecture, divided into the followin
 - **Invalid Details**: System prompts for correction if invalid input is detected.
 - **Payment Error**: System handles payment failures with options to retry or cancel.
 - **No Seats Available**: System suggests alternatives if no seats are available.
-## OUT PUT VIDEO:
+## OUT PUT VIDEO Of Code:
 https://github.com/user-attachments/assets/8d5af255-1b17-4c32-a740-6cebb78f9a12
+## Video of Documemt ( Daigram )
 ## Screenshots
 
 ![Screenshot of the Bus Booking System UI](screenshot.png)
