@@ -42,7 +42,7 @@ The Bus Booking System follows a layered architecture, divided into the followin
 - **No Seats Available**: System suggests alternatives if no seats are available.
 
 ## Video of Documemt ( Daigram )
-https://github.com/user-attachments/assets/913c094a-d14a-45de-8b7c-41f94bc9dc7c
+
 ## OUT PUT VIDEO Of Code:
 https://github.com/user-attachments/assets/8d5af255-1b17-4c32-a740-6cebb78f9a12
 
